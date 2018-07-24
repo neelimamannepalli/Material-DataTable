@@ -1,0 +1,204 @@
+<div class="tableView-selection-buttons">
+        <div class="r">
+            <button class="btn-myreports" [ngClass]="{'selected-report':!isAllReportView}" (click)="showMyReports()">My reports</button>
+        </div>
+        <div class="" *ngIf="isReportManagementAccess">
+            <button class="btn-allreports" [ngClass]="{'selected-report': isAllReportView}" 
+            (click)="showAllReports()">All reports</button>
+        </div>
+        </div>
+        <div class="table-container">
+            <div class="clear-filter">
+                <button class="btn-primary" (click)="clearAllFilter()">Clear filter</button>
+            </div>           
+            <mat-table #table matSort [dataSource]="dataSource" >
+        
+                <ng-container matColumnDef="reportId">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> ID </label>
+                        <div class="filter-div">
+                            <input class="form-control" (keyup)="applyFilter()" [(ngModel)]="filter.reportId" placeholder="Filter id">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small" >
+                        <a href="{{origin}}/reporthistory/{{tableData.reportId}}/summary">{{tableData.reportId}}</a>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="title">
+                    <mat-header-cell class="cell cell-large" *matHeaderCellDef>
+                        <label class="header-row" mat-sort-header> Title </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.title" (keyup)="applyFilter()" placeholder="Filter title">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-large">
+                        <label class="trow">{{tableData.title}}</label>
+                    </mat-cell>
+                </ng-container>
+               
+        
+                <ng-container matColumnDef="employeeId">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Employee Id </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.employeeId" (keyup)="applyFilter()" placeholder="Emp #">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.EmployeeId}} </label>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="empName">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Emp name </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.empName" (keyup)="applyFilter()" placeholder="emp name">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.empName}} </label>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="submitDate">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Submit date </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.submitDate" (keyup)="applyFilter()" placeholder="mm/dd/yyyy">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.submitDate | date:'MM/dd/yyyy'}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="eventDate">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Event date </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.eventDate" (keyup)="applyFilter()" placeholder="mm/dd/yyyy">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow">{{tableData.eventDate | date:'MM/dd/yyyy'}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="flightNumber">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header>Flight num</label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.flightNumber" (keyup)="applyFilter()" placeholder="Filter flight">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.flightNumber}}</label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="flightDate">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header>Flight date</label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.flightDate" (keyup)="applyFilter()" placeholder="mm/dd/yyyy">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.flightDate | date:'MM/dd/yyyy'}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="base">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Base </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.base" (keyup)="applyFilter()" placeholder="Filter base">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.base}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="departureStation">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Departure </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.departureStation" (keyup)="applyFilter()" placeholder="Filter departure">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.departureStation}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="arrivalStation">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Arrival </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.arrivalStation" (keyup)="applyFilter()" placeholder="Filter arrival">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.arrivalStation}}</label>
+                    </mat-cell>
+                </ng-container>
+    
+                <ng-container matColumnDef="event">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header>Event </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.event" (keyup)="applyFilter()" placeholder=" Filter event">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.event}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="affectedStation">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Event </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.affectedStation" (keyup)="applyFilter()" placeholder="Filter event">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.affectedStation}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header> Status </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.status" (keyup)="applyFilter()" placeholder="Filter status">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.status}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="DaysOpen">
+                    <mat-header-cell *matHeaderCellDef class="cell cell-small">
+                        <label class="header-row" mat-sort-header>Days open </label>
+                        <div class="filter-div">
+                            <input class="form-control" [(ngModel)]="filter.DaysOpen" (keyup)="applyFilter()" placeholder="Filter days">
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let tableData" class="cell cell-small">
+                        <label class="trow"> {{tableData.DaysOpen}} </label>
+                    </mat-cell>
+                </ng-container>
+        
+        
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="gotoReportSummary(row)"></mat-row>
+            </mat-table>
+        
+            <mat-paginator #paginator [length]="resultsLength" [pageSize]="10" [showFirstLastButtons]="true">
+            </mat-paginator>
+            <h3 *ngIf="!dataSource.data.length > 0" class="text-center"> No results found </h3>
+        </div>
+    

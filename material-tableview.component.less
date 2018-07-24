@@ -1,0 +1,219 @@
+@import 'variables-aa.less';
+
+.tableView-selection-buttons{
+    display:  inline-flex;
+    margin-top: 25px;border:1px solid #0078d2;
+    color:#0078d2;
+}
+.tableView-selection-buttons div button{
+   outline:none;
+}
+.selected-report{
+    background-color: #0078d2;
+    color:white;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.hideTable{
+    display:none !important;
+}
+.mat-table {
+  overflow: auto;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.tab-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.customThWidth{
+   flex: 0 0 150px;
+} 
+
+.mat-header-row {
+    background-color: @aa-ultra-light-gray !important;
+    font-family: @aa-font !important;
+    margin-top: 5px;
+    overflow:auto;
+}
+
+label {
+    color: black;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.mat-row {
+    font-size: 12px !important;
+    color: darkgray;
+}
+
+.trow {
+    font-size: 13px !important;
+}
+
+.filter-div{
+    margin: 0px 10px 10px 0px;
+}
+
+.btn-primary{
+    width: 80px;
+    height: 30px;
+    border: 0;
+    margin-right: 10px;
+    padding: 2px 6px 3px;
+    margin-left: 10px;
+    float: right;
+}
+
+.btn-myreports{
+    width: 85px;
+    height: 27px;
+    padding: 0;
+}
+
+.btn-allreports{
+    width: 85px;
+    height: 27px;
+    padding: 0;
+}
+
+
+.clear-filter {
+    float: right;
+    margin-left: 50px;
+}
+
+.cdk-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px !important;
+}
+
+.mat-sort-header-container {
+  align-items: center;
+}
+
+::-ms-clear {
+    display: none;
+  }
+
+.cell{
+    font-size: 15px;
+    @media (max-width: 768px) {
+        font-size: 11px;
+    }
+
+    @media (min-width:769px){
+        font-size: 11px;
+    }
+
+    @media (min-width: 1200px) {
+        font-size: 11px;
+    }
+
+    @media (min-width: 1400px) {
+        font-size: 12px;
+    }
+    
+    @media (min-width: 1600px) {
+        font-size: 14px;
+    }
+
+    &.cell-small {
+        max-width: 100px;
+        min-width: 100px;
+        width: auto;
+        @media (max-width: 768px) {
+            max-width: 100px;
+            min-width: 80px;
+        }
+
+            @media (min-width:769px){
+            max-width: 100px;
+            min-width: 80px;
+        }
+
+            @media (min-width: 1200px) {
+            max-width: 100px;
+            min-width: 80px;
+        }
+
+            @media (min-width: 1400px) {
+            max-width: 100px;
+            min-width: 80px;
+        }
+            
+            @media (min-width: 1600px) {
+            max-width: 100px;
+            min-width: 80px;
+        }
+    }
+    &.cell-med {
+        max-width: 100px;
+        min-width: 100px;
+        width: auto;
+        @media (max-width: 768px) {
+            max-width: 100px;
+            min-width: 100px;
+        }
+
+            @media (min-width:769px){
+            max-width: 100px;
+            min-width: 100px;
+        }
+
+            @media (min-width: 1200px) {
+            max-width: 100px;
+            min-width: 100px;
+        }
+
+            @media (min-width: 1400px) {
+            max-width: 100px;
+            min-width: 100px;
+        }
+            
+            @media (min-width: 1600px) {
+            max-width: 100px;
+            min-width: 100px;
+        }
+    }
+    &.cell-large {
+        min-width: 200px;
+        width: auto;
+        left: auto;
+        right: auto;
+        @media (max-width: 768px) {
+            min-width: 150px;
+        }
+
+            @media (min-width:769px){
+            min-width: 150px;
+        }
+
+            @media (min-width: 1200px) {
+            min-width: 150px;
+        }
+
+            @media (min-width: 1400px) {
+            min-width: 150px;
+        }
+            
+            @media (min-width: 1600px) {
+            min-width: 150px;
+        }
+    }
+}
